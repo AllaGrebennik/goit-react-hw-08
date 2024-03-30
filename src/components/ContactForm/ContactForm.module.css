@@ -1,0 +1,51 @@
+.container {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin: 0 auto 32px 0;
+  border: 1px solid #1b1b1b;
+  border-radius: 4px;
+  padding: 8px;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 2px;
+  font-size: 16px;
+  color: red;
+}
+
+.label {
+  color: #213547;
+  margin: 0;
+}
+
+.field {
+  margin: 0;
+  padding: 8px;
+  width: 300px;
+  border: 1px solid #1b1b1b;
+  border-radius: 4px;
+}
+
+.field:focus-visible {
+  outline-color: #6f5bdf;
+}
+
+.btn {
+  width: 120px;
+  padding: 4px;
+  font-size: 16px;
+  background-color: #f9f9f9;
+  border: 1px solid #1b1b1b;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn:active {
+  border: 1px solid #6f5bdf;
+}
