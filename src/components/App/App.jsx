@@ -3,8 +3,8 @@ import { Route, Routes } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { refreshUser } from "../../redux/auth/operations";
 import { selectIsRefreshing } from "../../redux/auth/selectors";
-import { RestrictedRoute } from "./RestrictedRoute";
-import { PrivateRoute } from "./PrivateRoute";
+import { RestrictedRoute } from "../RestrictedRoute/RestrictedRoute";
+import { PrivateRoute } from "../PrivateRoute/PrivateRoute";
 import Layout from "../Layout/Layout";
 
 const HomePage = lazy(() => import("../../pages/Home"));
@@ -17,15 +17,16 @@ function App() {
   const isRefreshing = useSelector(selectIsRefreshing);
   const dispatch = useDispatch();
 
-  useEffect( () => {
+  useEffect(() => {
     dispatch(refreshUser())
   }, [dispatch]);
 
   return (
-    <Layout>
+    <>
       {isRefreshing ? (
-        <b>Refreshing user, please wait...</b>
+        <b> Refreshing user, please wait...</b >
       ) : (
+        <Layout>
           <Suspense fallback={null}>
             <Routes>
               <Route path="/" element={<HomePage />} />
@@ -44,14 +45,14 @@ function App() {
               <Route path="/contacts" element={
                 <PrivateRoute
                   component={<ContactsPage />}
-                  redirectTo="/login" 
+                  redirectTo="/login"
                 />}
               />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
-        </Suspense>
-      )}
-    </Layout>
+          </Suspense>
+        </Layout>)}
+    </>
   );
 };
 
